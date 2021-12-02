@@ -23,7 +23,7 @@ def start_lottery():
     lottery = Lottery[-1]
     starting_tx = lottery.startLottery({"from": account})
     starting_tx.wait(1)  # wait for transaction to finish
-    print(f'{bcolors.OKGREEN}\n"The lottery has started!\n{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}\nThe lottery has started!{bcolors.ENDC}")
 
 
 def enter_lottery():
@@ -32,7 +32,7 @@ def enter_lottery():
     value = lottery.getEntranceFee() + 100000000
     tx = lottery.enter({"from": account, "value": value})
     tx.wait(1)  # wait for transaction to finish
-    print(f"{bcolors.WARNING}\nYou entered the lottery!\n{bcolors.ENDC}")
+    print(f"{bcolors.OKGREEN}\nYou entered the lottery!\n{bcolors.ENDC}")
 
 
 def end_lottery():
@@ -46,11 +46,11 @@ def end_lottery():
     ending_transaction.wait(1)
     i = 60
     while i > 0:
-        print(f"{bcolors.OKCYAN}Waiting ... {i} seconds{bcolors.ENDC}\r")
+        print(f"{bcolors.OKCYAN}Waiting ... {i} seconds{bcolors.ENDC}", end="\r")
         time.sleep(1)
         i -= 1
     print(
-        f"{bcolors.OKGREEN}{lottery.recentWinner()} is the new winner!\n{bcolors.ENDC}"
+        f"{bcolors.WARNING}{lottery.recentWinner()} is the new winner!\n{bcolors.ENDC}"
     )
 
 
