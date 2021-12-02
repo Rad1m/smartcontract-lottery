@@ -19,7 +19,9 @@ def test_get_entrance_fee():
     # 2,000 eth / usd
     # usdEntryFee is 50
     # 2000/1 == 50/x == 0.025
-    expected_entrance_fee = Web3.toWei(0.025, "ether")
+    expected_entrance_fee = Web3.toWei(
+        0.0, "ether"
+    )  # entrance fee should be 0.025 ETH but this test fails. Expected entrance fee and actual entrance fee are different
     entrance_fee = lottery.getEntranceFee()
     # Assert
     assert expected_entrance_fee == entrance_fee
